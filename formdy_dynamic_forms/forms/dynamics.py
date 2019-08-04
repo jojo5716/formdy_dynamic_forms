@@ -14,6 +14,7 @@ class ModelForm(forms.Form):
         self.request = request
         self.model = model
         super(ModelForm, self).__init__(*args, **kwargs)
+
         if model:
             model_fields = model.fields()
 

@@ -6,6 +6,7 @@ def input(input_data):
         label=input_data["name"],
         required=input_data["required"],
         max_length=input_data["max_length"],
+        initial=input_data.get("default", ""),
         widget=forms.TextInput(
             attrs={
                 "placeholder": input_data["placeholder"],
