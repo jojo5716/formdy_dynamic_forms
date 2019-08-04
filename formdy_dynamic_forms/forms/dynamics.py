@@ -5,6 +5,7 @@ MAP_FIELDS = {
     "input": {
         "text": input_fields.input,
         "password": input_fields.input,
+        "color": input_fields.input,
     }
 }
 
