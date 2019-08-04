@@ -14,10 +14,11 @@ class ModelForm(forms.Form):
         self.request = request
         self.model = model
         super(ModelForm, self).__init__(*args, **kwargs)
-        model_fields = model.fields()
+        if model:
+            model_fields = model.fields()
 
-        for field in model_fields:
-            field_name = field["name"]
-            render_field_func = MAP_FIELDS[field["element_type"]][field["field_type"]]
+            for field in model_fields:
+                field_name = field["name"]
+                render_field_func = MAP_FIELDS[field["element_type"]][field["field_type"]]
 
-            self.fields[field_name] = render_field_func(field)
+                self.fields[field_name] = render_field_func(field)
