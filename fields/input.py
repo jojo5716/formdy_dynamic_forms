@@ -1,11 +1,14 @@
 from django import forms
 
+EXTRA_ATTRS = ["regex"]
+
 
 def input(input_data):
     def get_extra_attrs():
         extra_attrs = {}
-        if "regex" in input_data:
-            extra_attrs["regex"] = input_data["regex"]
+        for extra_attr in EXTRA_ATTRS:
+            if extra_attr in input_data:
+                extra_attrs[extra_attr] = input_data[extra_attr]
 
         return extra_attrs
 
@@ -19,6 +22,5 @@ def input(input_data):
                 "placeholder": input_data["placeholder"],
                 "type": input_data["field_type"],
                 **get_extra_attrs()
-                # "pattern": input_data.get("regex", ""),
             })
     )

@@ -27,6 +27,9 @@ class ModelFormView(FormView):
         return self.form_class(request=self.request, model=self.model, **self.get_form_kwargs())
 
     def form_valid(self, form):
+        model = ModelAPI(self.kwargs["model_name"])
+        model.insert_row(form.cleaned_data)
+
         return super().form_valid(form)
 
     def get_success_url(self):
